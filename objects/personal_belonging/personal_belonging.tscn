@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dymswwfr5eocp"]
+
+[ext_resource type="Script" path="res://objects/personal_belonging/personal_belonging.gd" id="1_fiopn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32dwl"]
+
+[node name="Personal Belonging" type="RigidBody3D" groups=["pickup"]]
+mass = 5.0
+freeze = true
+script = ExtResource("1_fiopn")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_32dwl")
+
+[node name="Small" type="Node3D" parent="."]

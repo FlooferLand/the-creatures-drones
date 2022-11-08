@@ -1,0 +1,68 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dm1qdp602y23w"
+path="res://.godot/imported/Map.glb-f9c7b4d093e70e606711691075ccd458.scn"
+
+[deps]
+
+source_file="res://models/map/Map.glb"
+dest_files=["res://.godot/imported/Map.glb-f9c7b4d093e70e606711691075ccd458.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=0.25
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=false
+animation/fps=30
+import_script/path=""
+_subresources={
+"materials": {
+"BG Building text": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/emissive_sign.material"
+},
+"BG building": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/bg_building.material"
+},
+"Concrete": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/concrete.material"
+},
+"Darker Concrete": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/darker_concrete.material"
+},
+"Darker Wood": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/darker_wood.material"
+},
+"Dirt": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/dirt.material"
+},
+"Fence": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/wood.material"
+},
+"Floor": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/wood.material"
+},
+"Grass": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/grass.material"
+}
+}
+}

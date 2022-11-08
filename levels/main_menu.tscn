@@ -1,0 +1,221 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7vtgqq6t05ay"]
+
+[ext_resource type="Script" path="res://levels/scripts/main_menu.gd" id="1_0rbo6"]
+[ext_resource type="Texture2D" uid="uid://dc8d862dvpnbd" path="res://textures/other/render.png" id="1_226pb"]
+[ext_resource type="AudioStream" uid="uid://bl1akllh5ftum" path="res://audio/music/main_menu.mp3" id="3_ycc84"]
+[ext_resource type="Script" path="res://levels/scripts/start_info.gd" id="4_v3unv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63p1a"]
+bg_color = Color(0, 0, 0, 0.639216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb2tc"]
+bg_color = Color(0.6, 0.6, 0.6, 0.121569)
+skew = Vector2(0.236, 0.012)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 12.0
+expand_margin_top = 2.0
+expand_margin_right = 12.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hgn5"]
+bg_color = Color(1, 1, 1, 0.0588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ndk3"]
+bg_color = Color(0, 0, 0, 0.847059)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0rbo6")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ycc84")
+autoplay = true
+bus = &"Music"
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="Main"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_226pb")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="Main"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_63p1a")
+
+[node name="Title" type="Label" parent="Main"]
+offset_left = 33.0
+offset_top = 23.0
+offset_right = 423.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0.729412, 1, 1, 0.913725)
+theme_override_font_sizes/font_size = 36
+text = "The Creature's Drones"
+
+[node name="Panel" type="Panel" parent="Main/Title"]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hb2tc")
+
+[node name="Buttons" type="Panel" parent="Main"]
+offset_left = 114.0
+offset_top = 116.0
+offset_right = 334.0
+offset_bottom = 237.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2hgn5")
+
+[node name="Start" type="Button" parent="Main/Buttons"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "START"
+
+[node name="Quit" type="Button" parent="Main/Buttons"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 66.0
+offset_right = -16.0
+offset_bottom = 107.0
+grow_horizontal = 2
+text = "QUIT"
+
+[node name="Info" type="RichTextLabel" parent="Main"]
+modulate = Color(1, 1, 1, 0.662745)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -196.0
+offset_right = 1277.0
+offset_bottom = -1.0
+grow_vertical = 0
+bbcode_enabled = true
+text = "[b]CREDITS / INFO:[/b]
+Made by [url=https://flooferland.itch.io]FlooferLand[/url] for the [url=https://itch.io/jam/duel-game-jam][wave freq=3]Duel Game Jam[/wave][/url].
+Kordesii's game [i](cool person i had to duo against)[/i]: [url=https://kordesii.itch.io/cloudy-jump] Cloudy Jump (click here)[/url]
+
+Our themes were: [i]60 seconds, MS Paint art only, and \"do the game genre wrong\"[/i]
+All models, textures and music was made by me. Sound effects from FreeSound
+
+Made in the wonderful [url=https://godotengine.org]Godot game engine[/url] [i](4.0 beta 3)[/i]"
+
+[node name="Label" type="Label" parent="Main"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -638.0
+offset_top = 14.0
+offset_right = -21.0
+offset_bottom = 186.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.737255)
+text = "WARNING
+Current build is sorta broken
+Gameplay works, but there are missing sound effects and lag spiking issues
+I wasn't able to fix them as it's currently 5:30 AM and i have to submit the build since the deadline is in 2 hours.
+I will upload a build with most things fixed a few days after voting ends."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Info" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_v3unv")
+
+[node name="BG" type="TextureRect" parent="Info"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_226pb")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="Info"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ndk3")
+
+[node name="Info" type="RichTextLabel" parent="Info"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 16.0
+offset_right = -22.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
+text = "[center][b]INFO:[/b]
+This game is VERY short, as the deadline for the game jam was way shorter than i thought it'd be, so a lot of this game was rushed and really feels like a demo experience. Some features [i]like the drones walking around[/i] are also missing and generally gameplay may feel a bit janky.
+I'm currently planning to properly finish the game some day, so feel free to come back once i push any major update!
+
+[b]CONTROLS:[/b]
+[color=aad]WASD - Move
+Shift - Run
+E - Interact / Grab
+F - Toggle lantern
+F10 - Toggle fullscreen[/color]"
+
+[node name="StartButton" type="Button" parent="Info"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = 274.0
+offset_right = 129.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "START"

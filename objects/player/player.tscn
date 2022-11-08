@@ -1,0 +1,281 @@
+[gd_scene load_steps=13 format=3 uid="uid://dh7fld52ko42u"]
+
+[ext_resource type="Script" path="res://objects/player/player.gd" id="1_fqsrl"]
+[ext_resource type="PackedScene" uid="uid://c0g7e2aj2x3a4" path="res://models/lantern/Lantern.glb" id="2_fccgj"]
+[ext_resource type="Script" path="res://objects/player/lantern.gd" id="2_hlae7"]
+[ext_resource type="Script" path="res://objects/player/footsteps.gd" id="3_rf6nh"]
+[ext_resource type="Texture2D" uid="uid://be3lsnrwfspig" path="res://textures/crosshair/crosshair.png" id="4_p4let"]
+[ext_resource type="Texture2D" uid="uid://bcxmto8idkuva" path="res://textures/crosshair/crosshair_grab.png" id="5_wls44"]
+[ext_resource type="Script" path="res://objects/player/game_timer.gd" id="6_il3p2"]
+[ext_resource type="Script" path="res://objects/player/grab_displayer.gd" id="7_xkhyl"]
+[ext_resource type="Texture2D" uid="uid://t32us2tbrlia" path="res://textures/crosshair/store_item.png" id="7_yeiy3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e6wq5"]
+radius = 0.2
+height = 1.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m2e2q"]
+radius = 0.2
+height = 0.7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orc8x"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.388235)
+skew = Vector2(-0.322, 0)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+script = ExtResource("1_fqsrl")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("CapsuleShape3D_e6wq5")
+
+[node name="CrouchCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+shape = SubResource("CapsuleShape3D_m2e2q")
+disabled = true
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="Head" type="Node3D" parent="Neck"]
+
+[node name="Camera" type="Camera3D" parent="Neck/Head"]
+current = true
+fov = 70.0
+near = 0.001
+
+[node name="Interact" type="RayCast3D" parent="Neck/Head"]
+target_position = Vector3(0, 0, -2.5)
+collide_with_areas = true
+
+[node name="Items" type="SpringArm3D" parent="Neck/Head"]
+transform = Transform3D(-0.976413, 0, 0.215911, -0.0203228, 0.99556, -0.0919055, -0.214953, -0.0941257, -0.972078, 0.157105, -0.184924, -0.173203)
+spring_length = 0.25
+metadata/_edit_group_ = true
+
+[node name="Lantern" type="Node3D" parent="Neck/Head/Items"]
+transform = Transform3D(1, -1.86265e-09, 0, -3.72529e-09, 1, -1.49012e-08, 2.98023e-08, 7.45058e-09, 1, 0, 0, 0)
+script = ExtResource("2_hlae7")
+
+[node name="Offset" type="Node3D" parent="Neck/Head/Items/Lantern"]
+
+[node name="Model" parent="Neck/Head/Items/Lantern/Offset" instance=ExtResource("2_fccgj")]
+transform = Transform3D(0.34202, -1.86265e-09, 0.939693, 6.70552e-08, 1, -3.72529e-09, -0.939693, 7.45058e-09, 0.34202, 0.00212155, -0.118344, -0.0556229)
+
+[node name="Light" type="OmniLight3D" parent="Neck/Head/Items/Lantern/Offset"]
+transform = Transform3D(1, -1.67638e-08, -6.10948e-07, -1.11759e-08, 1, -9.68575e-08, 2.98023e-08, 7.45058e-09, 1, 0.00208154, -0.0021944, -0.0545186)
+light_color = Color(0.65098, 0.890196, 0.843137, 1)
+light_energy = 1.5
+light_indirect_energy = 10.0
+omni_range = 12.0
+
+[node name="Belongings" type="Node3D" parent="Neck/Head/Items"]
+
+[node name="Offset" type="Node3D" parent="Neck/Head/Items/Belongings"]
+transform = Transform3D(0.707108, -1.67638e-08, 0.707111, 2.6077e-08, 1, -2.23517e-08, -0.707108, 8.9407e-08, 0.707112, 0.402187, -0.131034, 0.0296063)
+
+[node name="Footsteps" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+script = ExtResource("3_rf6nh")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="Footsteps"]
+bus = &"Footsteps"
+
+[node name="Timer" type="Timer" parent="Footsteps"]
+wait_time = 0.4
+one_shot = true
+
+[node name="RayCast" type="RayCast3D" parent="Footsteps"]
+target_position = Vector3(0, -0.2, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Crosshairs" type="Control" parent="UI/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="idle" type="TextureRect" parent="UI/UI/Crosshairs"]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_p4let")
+ignore_texture_size = true
+
+[node name="interact" type="TextureRect" parent="UI/UI/Crosshairs"]
+visible = false
+modulate = Color(1, 1, 1, 0.67451)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_p4let")
+ignore_texture_size = true
+
+[node name="pickup" type="TextureRect" parent="UI/UI/Crosshairs"]
+visible = false
+modulate = Color(1, 1, 1, 0.819608)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wls44")
+ignore_texture_size = true
+
+[node name="store" type="TextureRect" parent="UI/UI/Crosshairs"]
+visible = false
+modulate = Color(1, 1, 1, 0.878431)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_yeiy3")
+ignore_texture_size = true
+
+[node name="Time" type="Panel" parent="UI/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_top = 16.0
+offset_right = 275.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_orc8x")
+script = ExtResource("6_il3p2")
+
+[node name="Label" type="Label" parent="UI/UI/Time"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.444
+anchor_right = 0.5
+anchor_bottom = -0.444
+offset_left = -275.0
+offset_top = 12.984
+offset_right = 275.0
+offset_bottom = 37.984
+grow_horizontal = 2
+grow_vertical = 2
+text = "60 seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/UI/Time"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.444
+anchor_right = 0.5
+anchor_bottom = -0.444
+offset_left = -275.0
+offset_top = 36.984
+offset_right = 275.0
+offset_bottom = 49.984
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 60.0
+step = 0.1
+value = 60.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="UI/UI/Time"]
+wait_time = 0.13
+autostart = true
+
+[node name="GrabCounter" type="Panel" parent="UI/UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -83.0
+offset_right = 271.0
+offset_bottom = -17.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_orc8x")
+script = ExtResource("7_xkhyl")
+
+[node name="GRABBED" type="Label" parent="UI/UI/GrabCounter"]
+modulate = Color(1, 0.247059, 0.733333, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "GRABBED"
+horizontal_alignment = 1
+
+[node name="Count" type="Label" parent="UI/UI/GrabCounter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "0 out of 0"
+horizontal_alignment = 1
+vertical_alignment = 2

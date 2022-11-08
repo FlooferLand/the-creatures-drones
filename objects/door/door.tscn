@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr7k6hn2xu23y"]
+
+[ext_resource type="Script" path="res://objects/door/door.gd" id="1_lh141"]
+[ext_resource type="PackedScene" uid="uid://c802cgqd0q1fc" path="res://models/door/Door frame.glb" id="1_q2ws2"]
+[ext_resource type="PackedScene" uid="uid://dicnu2r35wjst" path="res://models/door/Door.glb" id="2_teknd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pf5fv"]
+size = Vector3(0.14, 1.64, 1)
+
+[node name="Door" type="Node3D" groups=["interactable"]]
+script = ExtResource("1_lh141")
+
+[node name="Frame" parent="." instance=ExtResource("1_q2ws2")]
+
+[node name="Door" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.45)
+
+[node name="Model" parent="Door" instance=ExtResource("2_teknd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.445)
+
+[node name="Body" type="StaticBody3D" parent="Door"]
+
+[node name="Collision" type="CollisionShape3D" parent="Door/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93, -0.45)
+shape = SubResource("BoxShape3D_pf5fv")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+unit_size = 5.0
+bus = &"SFX"
+
+[node name="NavLinks" type="Node3D" parent="."]
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="NavLinks"]
+start_location = Vector3(0.8, 0.2, 0)
+end_location = Vector3(-0.8, 0.2, 0)

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvhh1kgseauca"]
+
+[ext_resource type="Script" path="res://objects/game_level_loader/level_loader.gd" id="1_5c7kn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bkds"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[node name="LevelLoader" type="CanvasLayer"]
+layer = 100
+
+[node name="LoadingUI" type="Panel" parent="."]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8bkds")
+script = ExtResource("1_5c7kn")
+
+[node name="Loading" type="Label" parent="LoadingUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 649.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.803922)
+theme_override_font_sizes/font_size = 32
+text = "Loading assets.."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="LoadingUI"]
+wait_time = 2.0
+one_shot = true
+autostart = true

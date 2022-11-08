@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkhenlrq35o6d"]
+
+[ext_resource type="Script" path="res://objects/creepy_creature/creepy_creature.gd" id="1_ou5y4"]
+[ext_resource type="PackedScene" uid="uid://bc64nfv450pbi" path="res://models/creepy_creature/Creepy Creature.glb" id="1_us3g1"]
+[ext_resource type="PackedScene" uid="uid://d2uutcj8pwe8n" path="res://models/hole/hole.glb" id="3_amuoj"]
+[ext_resource type="AudioStream" uid="uid://dtsnqfosqm5p8" path="res://audio/the_creature.wav" id="3_n040k"]
+
+[node name="CreepyCreature" type="Node3D"]
+script = ExtResource("1_ou5y4")
+
+[node name="Model" parent="." instance=ExtResource("1_us3g1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+visible = false
+
+[node name="hole" parent="Model" instance=ExtResource("3_amuoj")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0.25, 0)
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_n040k")
+unit_size = 20.0
+panning_strength = 1.3
+bus = &"SFX"
+doppler_tracking = 1

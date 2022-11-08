@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce6lh5jhe568k"]
+
+[ext_resource type="PackedScene" uid="uid://c3hckg6t3qv7d" path="res://models/car/Car.glb" id="1_jqnal"]
+[ext_resource type="Texture2D" uid="uid://tuk5bndw8upy" path="res://textures/light/light_all.png" id="2_w1o7h"]
+
+[node name="Car Model" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_jqnal")]
+
+[node name="Left Headlight" type="SpotLight3D" parent="Model"]
+transform = Transform3D(-1, -1.95399e-14, -8.74227e-08, -1.51808e-08, 0.984808, 0.173648, 8.60946e-08, 0.173648, -0.984808, -0.51, 0.83, 2.2)
+light_color = Color(0.941176, 1, 1, 1)
+light_energy = 40.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 2.0
+light_projector = ExtResource("2_w1o7h")
+shadow_enabled = true
+spot_range = 30.0
+spot_angle = 40.0
+
+[node name="Right Headlight" type="SpotLight3D" parent="Model"]
+transform = Transform3D(-1, -1.95399e-14, -8.74227e-08, -1.51808e-08, 0.984808, 0.173648, 8.60946e-08, 0.173648, -0.984808, 0.52, 0.83, 2.2)
+light_color = Color(0.941176, 1, 1, 1)
+light_energy = 40.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 2.0
+light_projector = ExtResource("2_w1o7h")
+shadow_enabled = true
+spot_range = 30.0
+spot_angle = 40.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 4, 0)
+light_energy = 7.0
+light_indirect_energy = 3.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+omni_range = 6.0

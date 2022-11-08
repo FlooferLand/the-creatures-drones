@@ -1,0 +1,29 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bc64nfv450pbi"
+path="res://.godot/imported/Creepy Creature.glb-fd32d1e4e532fd8a3a15b0d47718b3ef.scn"
+
+[deps]
+
+source_file="res://models/creepy_creature/Creepy Creature.glb"
+dest_files=["res://.godot/imported/Creepy Creature.glb-fd32d1e4e532fd8a3a15b0d47718b3ef.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=0.5
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=24.0
+import_script/path=""
+_subresources={}

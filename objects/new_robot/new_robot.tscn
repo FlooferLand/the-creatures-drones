@@ -1,0 +1,272 @@
+[gd_scene load_steps=15 format=3 uid="uid://cghj5h632f5ys"]
+
+[ext_resource type="Script" path="res://objects/new_robot/new_robot.gd" id="1_drhfi"]
+[ext_resource type="PackedScene" uid="uid://nwhlqa0loefe" path="res://models/robot/Robot.glb" id="2_hgumt"]
+[ext_resource type="PackedScene" uid="uid://d2uutcj8pwe8n" path="res://models/hole/hole.glb" id="2_q5un4"]
+[ext_resource type="Texture2D" uid="uid://wxqkgf8efhv0" path="res://textures/light/light_03.png" id="3_r1800"]
+[ext_resource type="Script" path="res://objects/robot/ooga_booga.gd" id="4_ys4aw"]
+[ext_resource type="Texture2D" uid="uid://bd2p64p73d2ya" path="res://textures/funny/ooga.png" id="5_l6lhs"]
+[ext_resource type="AudioStream" uid="uid://b2bdta7yon8il" path="res://audio/ooga_booga.mp3" id="6_hvm7b"]
+[ext_resource type="AudioStream" uid="uid://bp8a0xti3w73d" path="res://audio/enemy_crawl.wav" id="8_sbfmg"]
+[ext_resource type="AudioStream" uid="uid://cm0xkp82el7q0" path="res://audio/enemy_angry.wav" id="9_s06fc"]
+[ext_resource type="Script" path="res://scripts/HideInGame.gd" id="10_picfh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8m58y"]
+size = Vector3(0.6, 0.4, 0.8)
+
+[sub_resource type="Animation" id="Animation_g3dcq"]
+resource_name = "Main"
+length = 14.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.9, 7, 8.9, 10.7, 12.7, 14.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Robot:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -0.360619, -0.25, 0, 0.25, 0, -0.098, -0.25, 0, 0.25, 0, 0.102, -0.25, 0, 0.25, 0, 0.102, -0.25, 0, 0.25, 0, 0.102, -0.25, 0, 0.25, 0, -0.498, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.9, 7, 8.9, 10.7, 12.7, 14.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Robot:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.3, -0.25, 0, 0.25, 0, -0.5, -0.25, 0, 0.25, 0, -0.6, -0.25, 0, 0.25, 0, -0.6, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.9, 7, 8.9, 10.7, 12.7, 14.4)
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_sbfmg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Robot:rotation:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.0472, -0.25, 0, 0.25, 0, 0.785398, -0.25, 0, 0.25, 0, 0.610865, -0.25, 0, 0.25, 0, -1.39626, -0.25, 0, 0.25, 0, -1.39626, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5.5, 8.9, 10.7, 12.7, 14.4)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Robot:rotation:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5.5, 8.9, 10.7, 12.7, 14.4)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Robot:rotation:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5.5, 8.9, 10.7, 12.7, 14.4)
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(10.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grab_item"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ey5l5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Robot:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Robot:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Robot:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Robot:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Robot:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2b4cq"]
+_data = {
+"Main": SubResource("Animation_g3dcq"),
+"RESET": SubResource("Animation_ey5l5")
+}
+
+[node name="New Robot" type="Node3D"]
+script = ExtResource("1_drhfi")
+
+[node name="Hole" parent="." instance=ExtResource("2_q5un4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="Robot" type="Area3D" parent="." groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Model" parent="Robot" instance=ExtResource("2_hgumt")]
+
+[node name="SpotLight" type="SpotLight3D" parent="Robot/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448, -0.244061)
+light_color = Color(0.827451, 1, 1, 1)
+light_energy = 40.0
+light_volumetric_fog_energy = 1.5
+light_projector = ExtResource("3_r1800")
+light_size = 1.0
+shadow_enabled = true
+spot_angle = 40.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Robot/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.568627, 1, 1, 1)
+light_energy = 1.6
+light_indirect_energy = 1.5
+shadow_enabled = true
+omni_range = 6.5
+
+[node name="Collision" type="CollisionShape3D" parent="Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299513, 0.03)
+shape = SubResource("BoxShape3D_8m58y")
+
+[node name="OogaBooga" type="Node3D" parent="Robot"]
+script = ExtResource("4_ys4aw")
+
+[node name="Sprite" type="Sprite3D" parent="Robot/OogaBooga"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.9, 0)
+visible = false
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_l6lhs")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Robot/OogaBooga"]
+stream = ExtResource("6_hvm7b")
+volume_db = -4.0
+
+[node name="SwitchSprite" type="Timer" parent="Robot/OogaBooga"]
+wait_time = 0.08
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+stream = ExtResource("8_sbfmg")
+unit_size = 3.0
+panning_strength = 1.4
+bus = &"SFX"
+emission_angle_enabled = true
+emission_angle_degrees = 70.0
+emission_angle_filter_attenuation_db = -6.0
+doppler_tracking = 2
+
+[node name="AngyAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+stream = ExtResource("9_s06fc")
+volume_db = -3.0
+unit_size = 3.0
+pitch_scale = 1.5
+panning_strength = 1.4
+bus = &"SFX"
+emission_angle_enabled = true
+emission_angle_degrees = 70.0
+emission_angle_filter_attenuation_db = -6.0
+doppler_tracking = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2b4cq")
+}
+
+[node name="PointArrow" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -0.4)
+size = Vector3(0.2, 0.2, 0.8)
+script = ExtResource("10_picfh")

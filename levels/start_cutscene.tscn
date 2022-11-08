@@ -1,0 +1,614 @@
+[gd_scene load_steps=21 format=3 uid="uid://dd58tcea7p8ya"]
+
+[ext_resource type="Script" path="res://levels/scripts/start_cutscene.gd" id="1_cnutu"]
+[ext_resource type="PackedScene" uid="uid://cfp8l0357fukm" path="res://objects/map/map.tscn" id="1_kmdo4"]
+[ext_resource type="PackedScene" uid="uid://nwhlqa0loefe" path="res://models/robot/Robot.glb" id="2_ewkhq"]
+[ext_resource type="PackedScene" uid="uid://ce6lh5jhe568k" path="res://objects/car/car_model.tscn" id="4_o1pj0"]
+[ext_resource type="AudioStream" uid="uid://chjonb7ae73al" path="res://audio/music/intro_song.mp3" id="5_d6lsb"]
+[ext_resource type="AudioStream" uid="uid://byeoe2ewq08ts" path="res://audio/car/car_drive.mp3" id="5_jxira"]
+[ext_resource type="AudioStream" uid="uid://dnhumg7gmh74x" path="res://audio/car/tire_skid.wav" id="6_7fce0"]
+[ext_resource type="AudioStream" uid="uid://cc1jstrs6sa4i" path="res://audio/explosion.wav" id="8_m7rgd"]
+[ext_resource type="Texture2D" uid="uid://c217latloheto" path="res://textures/particles/flame_01.png" id="9_5ws5g"]
+[ext_resource type="PackedScene" uid="uid://cvhh1kgseauca" path="res://objects/game_level_loader/level_loader.tscn" id="9_qasfw"]
+
+[sub_resource type="Animation" id="Animation_khe03"]
+resource_name = "Main"
+length = 31.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hoard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(17, 0, -60), Vector3(17, 0, -37.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car Model:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 9.8, 11.9, 12.6, 13.4, 14, 14.7, 16.1, 18.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(15.1, 0, -250), Vector3(15.1, 0, -131.2), Vector3(17.1, 0, -50), Vector3(17.117, 0, -36.801), Vector3(17.1, 0, -19.7584), Vector3(17.1, 0, -7.75836), Vector3(16.1, 0, 0), Vector3(15.6, 0, 1.8), Vector3(15.6, 0, 1.9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Car Model:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 9.8, 12, 12.6, 13.4, 14.7, 16.1, 18.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0.287979, 0), Vector3(0, 0, 0), Vector3(0, -2.61799, 0), Vector3(0, -2.61799, 0), Vector3(0, -2.61799, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hoard:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 12.5, 12.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(16.8, -0.25, 0, 0.25, 0, 16.8, -0.25, 0, 0.25, 0, 16.975, -0.25, 0, 0.25, 0, 16.975, -0.25, 0, 0.25, 0, 16.596, -0.25, 0, 0.25, 0, 15.918, -0.25, 0, 0.25, 0, 15.756, -0.25, 0, 0.25, 0, 22, -0.25, 0, 0.25, 0, 18, -0.25, 0, 0.25, 0, 14, -0.25, 0, 0.25, 0, 13, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10.8, 12.5, 12.6, 14.1, 17, 21.9, 22, 25.9, 29, 30.9)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1.1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 0.595, -0.25, 0, 0.25, 0, 0.595, -0.25, 0, 0.25, 0, 0.374, -0.25, 0, 0.25, 0, 0.262, -0.25, 0, 0.25, 0, 0.269, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10.8, 12.5, 12.6, 14.1, 17, 21.9, 22, 25.9, 29, 30.9)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera:position:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-36, -0.25, 0, 0.25, 0, -36, -0.25, 0, 0.25, 0, -36.12, -0.25, 0, 0.25, 0, -41.62, -0.25, 0, 0.25, 0, -30.39, -0.25, 0, 0.25, 0, -26.003, -0.25, 0, 0.25, 0, -17.512, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 10.8, 12.5, 12.6, 14.1, 17, 21.9, 22, 25.9, 29, 30.9)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera:rotation:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.523599, -0.25, 0, 0.25, 0, -0.10472, -0.25, 0, 0.25, 0, -0.139626, -0.25, 0, 0.25, 0, -0.0733038, -0.25, 0, 0.25, 0, -0.221657, -0.25, 0, 0.25, 0, 0.0855211, -0.25, 0, 0.25, 0, 0.015708, -0.25, 0, 0.25, 0, 0.0680678, -0.25, 0, 0.25, 0, 0.0523599, -0.25, 0, 0.25, 0, 0.0314159, -0.25, 0, 0.25, 0, 0.0471239, -0.25, 0, 0.25, 0, 0.0314159, -0.25, 0, 0.25, 0, -0.523599, -0.25, 0, 0.25, 0, -0.356047, -0.25, 0, 0.25, 0, -0.1309, -0.25, 0, 0.25, 0, -0.0855211, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.6, 5.5, 6.4, 9.2, 10.2781, 10.8, 12.5, 12.6, 14.1, 17, 21.9, 22, 25.9, 29, 30.9)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera:rotation:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -3.14159, -0.25, 0, 0.25, 0, -3.18348, -0.25, 0, 0.25, 0, -3.16428, -0.25, 0, 0.25, 0, -3.19395, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0, 1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.6, 5.5, 6.4, 9.2, 10.2781, 10.8, 12.5, 12.6, 14.1, 17, 21.9, 22, 25.9, 29, 30.9)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera:rotation:z")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -2.52368e-08, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.6, 5.5, 6.4, 9.2, 10.2781, 10.8, 12.5, 12.6, 14.1, 17, 21.9, 22, 25.9, 29, 30.9)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera:fov")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(31.4, -0.25, 0, 0.25, 0, 58.4, -0.25, 0, 0.25, 0, 24.1, -0.25, 0, 0.25, 0, 16.5, -0.25, 0, 0.25, 0, 25.7, -0.25, 0, 0.25, 0, 25.7, -0.25, 0, 0.25, 0, 19.7, -0.25, 0, 0.25, 0, 39.6, -0.25, 0, 0.25, 0, 14, -0.25, 0, 0.25, 0, 7.8, -0.25, 0, 0.25, 0, 7.8, -0.25, 0, 0.25, 0, 9.6, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0, 30.1, -0.25, 0, 0.25, 0, 27.3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.6, 5.5, 6.4, 9.2, 10.2781, 10.8, 12.5, 12.6, 14.1, 17, 21.9, 22, 25.9, 29)
+}
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Car Model/Audio")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 6.76594,
+"start_offset": 0.0,
+"stream": ExtResource("5_jxira")
+}, {
+"end_offset": 3.60851,
+"start_offset": 0.0,
+"stream": ExtResource("5_jxira")
+}],
+"times": PackedFloat32Array(6.7, 9.5)
+}
+tracks/12/type = "audio"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Car Model/Skid")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_7fce0")
+}],
+"times": PackedFloat32Array(12.2)
+}
+tracks/13/type = "audio"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Ambiance")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_d6lsb")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("UI/Control/Label:text")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 5.5, 22.5, 23, 23.4, 23.9, 24.4, 24.9, 25.3, 25.8, 26.2, 26.7, 27.1, 27.6, 28, 28.5, 28.9, 29.4, 29.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Oh no, the evil drones from the Friendly Neighbourhood Huge Corporation escaped!", "Grab all of your belongings and throw them in your car before they steal 'em all!", "Hurry, before IT arrives.", "Hurry, before it arrives.", "Hurry, before IT arrives.", "Hurry, before it arrives.", "Hurry, before IT arrives.", "Hurry, before it arrives.", "Hurry, before IT arrives.", "Hurry, before it arrives.", "Hurry, before IT arrives.", "Hurry, before it arrives.", "Hurry, before IT arrives.", "Hurry, before it arrives.", "Hurry, before IT arrives.", "Hurry, before it arrives.", "Hurry, before IT arrives.", "Hurry, before it arrives.", "Hurry, before IT arrives."]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("UI/Control/Label:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.5, 3, 3.6, 5.5, 6, 11, 11.6, 22.5, 23, 26, 29.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(0.78, 0, 0, 1), Color(0.780392, 0, 0, 0.8), Color(1, 1, 1, 0)]
+}
+tracks/16/type = "audio"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Hoard/Audio")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_m7rgd")
+}],
+"times": PackedFloat32Array(12.5)
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Explosion:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_6yl8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hoard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(17, 0, -24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car Model:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(15.1, 0, -0.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Car Model:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hoard:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(16.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera:position:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera:rotation:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.523599, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera:rotation:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera:rotation:z")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera:fov")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("UI/Control/Label:text")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("UI/Control/Label:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Explosion:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lpyd5"]
+_data = {
+"Main": SubResource("Animation_khe03"),
+"RESET": SubResource("Animation_6yl8e")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xaj1j"]
+transparency = 1
+albedo_color = Color(1, 0.516915, 0.383205, 1)
+albedo_texture = ExtResource("9_5ws5g")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ug1lr"]
+offsets = PackedFloat32Array(0, 0.512931, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.860369, 0.860369, 0.860369, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vlfgw"]
+gradient = SubResource("Gradient_ug1lr")
+
+[sub_resource type="Curve" id="Curve_es6nb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0454545), -3.89876, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3fe5m"]
+curve = SubResource("Curve_es6nb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_id80n"]
+direction = Vector3(0, 0.5, 0)
+spread = 25.0
+gravity = Vector3(0, -3, 0)
+initial_velocity_max = 12.21
+linear_accel_min = 8.21
+linear_accel_max = 9.83
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_3fe5m")
+color_ramp = SubResource("GradientTexture1D_vlfgw")
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+collision_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_6jtyn"]
+
+[node name="Start Cutscene" type="Node3D"]
+script = ExtResource("1_cnutu")
+
+[node name="Map" parent="." instance=ExtResource("1_kmdo4")]
+
+[node name="Hoard" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17, 0, -24)
+metadata/_edit_lock_ = true
+
+[node name="Robots" type="Node3D" parent="Hoard"]
+
+[node name="Robot" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 2)
+
+[node name="Robot2" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299999, 0, 2)
+
+[node name="Robot3" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 2)
+
+[node name="Robot4" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40001, 0, 0.400005)
+
+[node name="Robot5" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299999, 0, 0.4)
+
+[node name="Robot6" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, 0.4)
+
+[node name="Robot7" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10002, 0, -1.19999)
+
+[node name="Robot8" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299999, 0, -1.3)
+
+[node name="Robot9" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -1.2)
+
+[node name="Robot10" parent="Hoard/Robots" instance=ExtResource("2_ewkhq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299999, 0, -2.9)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Hoard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+light_color = Color(1, 0.45098, 0.384314, 1)
+light_energy = 7.0
+light_volumetric_fog_energy = 0.0
+omni_range = 10.0
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="Hoard"]
+stream = ExtResource("8_m7rgd")
+volume_db = 7.0
+unit_size = 25.0
+max_db = 3.2
+panning_strength = 1.25
+bus = &"SFX"
+doppler_tracking = 1
+
+[node name="Car Model" parent="." instance=ExtResource("4_o1pj0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1, 0, -0.2)
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="Car Model"]
+stream = ExtResource("5_jxira")
+volume_db = 6.0
+unit_size = 15.0
+
+[node name="Skid" type="AudioStreamPlayer3D" parent="Car Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+stream = ExtResource("6_7fce0")
+volume_db = 4.0
+unit_size = 20.0
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 16.8, 1.1, 0)
+current = true
+fov = 31.4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lpyd5")
+}
+
+[node name="Ambiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_d6lsb")
+volume_db = -1.0
+autoplay = true
+bus = &"Music"
+
+[node name="Explosion" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, -35.6)
+material_override = SubResource("StandardMaterial3D_xaj1j")
+emitting = false
+amount = 18
+lifetime = 3.0
+one_shot = true
+speed_scale = 0.7
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_id80n")
+draw_pass_1 = SubResource("QuadMesh_6jtyn")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="UI/Control"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -610.0
+offset_top = -74.0
+offset_right = 610.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.45098)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipIndicator" type="Control" parent="UI/Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -302.0
+offset_top = 14.0
+offset_right = 302.0
+offset_bottom = 75.0
+grow_horizontal = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/Control/SkipIndicator"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = 26.5
+offset_right = -43.0
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.1
+
+[node name="Label" type="Label" parent="UI/Control/SkipIndicator"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 23
+text = "Hold to skip cutscene!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelLoader" parent="." instance=ExtResource("9_qasfw")]

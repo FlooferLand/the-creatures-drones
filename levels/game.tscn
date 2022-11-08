@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://bas0d51vplpid"]
+
+[ext_resource type="PackedScene" uid="uid://cfp8l0357fukm" path="res://objects/map/map.tscn" id="1_bf0ml"]
+[ext_resource type="PackedScene" uid="uid://dymswwfr5eocp" path="res://objects/personal_belonging/personal_belonging.tscn" id="2_pvdsb"]
+[ext_resource type="PackedScene" uid="uid://dnx7oevnd2w0" path="res://models/personal_belongings/guitar.glb" id="3_bln6k"]
+[ext_resource type="PackedScene" uid="uid://catebhj8udro" path="res://objects/car/Car.tscn" id="3_lfyu5"]
+[ext_resource type="PackedScene" uid="uid://ck7aqo2lc0rq8" path="res://models/personal_belongings/phone.glb" id="4_3uo8r"]
+[ext_resource type="PackedScene" uid="uid://dh7fld52ko42u" path="res://objects/player/player.tscn" id="4_gsjwd"]
+[ext_resource type="Script" path="res://levels/scripts/enemy_spawner.gd" id="4_pkltd"]
+[ext_resource type="PackedScene" uid="uid://b2srcm73h206m" path="res://models/personal_belongings/TV.glb" id="5_h62v8"]
+[ext_resource type="PackedScene" uid="uid://crsvja7c0qmc8" path="res://models/personal_belongings/crates.glb" id="6_o5cy3"]
+[ext_resource type="PackedScene" uid="uid://bfsgmdbuugpme" path="res://models/personal_belongings/case.glb" id="7_lkmq7"]
+[ext_resource type="PackedScene" uid="uid://dkhenlrq35o6d" path="res://objects/creepy_creature/creepy_creature.tscn" id="10_1ijcf"]
+[ext_resource type="PackedScene" uid="uid://cvhh1kgseauca" path="res://objects/game_level_loader/level_loader.tscn" id="12_uwewo"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Map" parent="." instance=ExtResource("1_bf0ml")]
+metadata/_edit_lock_ = true
+
+[node name="Gameplay" type="Node3D" parent="."]
+
+[node name="Belongings" type="Node3D" parent="Gameplay"]
+
+[node name="0" parent="Gameplay/Belongings" instance=ExtResource("2_pvdsb")]
+transform = Transform3D(-4.30473e-08, -0.173648, -0.984808, 0.220102, 0.960657, -0.16939, 0.975477, -0.216758, 0.0382202, -2.6, 0.1, -1.8)
+
+[node name="Item" parent="Gameplay/Belongings/0" instance=ExtResource("3_bln6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340011, 0)
+
+[node name="1" parent="Gameplay/Belongings" instance=ExtResource("2_pvdsb")]
+transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -11.6792, 0.742367, -3.5)
+
+[node name="phone" parent="Gameplay/Belongings/1" instance=ExtResource("4_3uo8r")]
+
+[node name="2" parent="Gameplay/Belongings" instance=ExtResource("2_pvdsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0.73, -0.6)
+
+[node name="TV" parent="Gameplay/Belongings/2" instance=ExtResource("5_h62v8")]
+
+[node name="3" parent="Gameplay/Belongings" instance=ExtResource("2_pvdsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0.13, 2.5)
+
+[node name="crates" parent="Gameplay/Belongings/3" instance=ExtResource("6_o5cy3")]
+
+[node name="4" parent="Gameplay/Belongings" instance=ExtResource("2_pvdsb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.1, 0.736, 4.2)
+
+[node name="case" parent="Gameplay/Belongings/4" instance=ExtResource("7_lkmq7")]
+
+[node name="Car" parent="Gameplay" instance=ExtResource("3_lfyu5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1, 0, -0.2)
+
+[node name="EnemySpawner" type="Node3D" parent="Gameplay"]
+script = ExtResource("4_pkltd")
+
+[node name="Locations" type="Node3D" parent="Gameplay/EnemySpawner"]
+
+[node name="0" type="Marker3D" parent="Gameplay/EnemySpawner/Locations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, -1.1)
+
+[node name="1" type="Marker3D" parent="Gameplay/EnemySpawner/Locations"]
+transform = Transform3D(-0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173648, -10.7, 0, -3.7)
+
+[node name="2" type="Marker3D" parent="Gameplay/EnemySpawner/Locations"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5, 0, -0.5)
+
+[node name="3" type="Marker3D" parent="Gameplay/EnemySpawner/Locations"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -16.6, 0, 3.5)
+
+[node name="4" type="Marker3D" parent="Gameplay/EnemySpawner/Locations"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.1, 0, 3.2)
+
+[node name="Timer" type="Timer" parent="Gameplay/EnemySpawner"]
+wait_time = 14.0
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("4_gsjwd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.692, 0.982, 0)
+
+[node name="CreepyCreature" parent="." instance=ExtResource("10_1ijcf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.7, -0.1, 7.7)
+
+[node name="LevelLoader" parent="." instance=ExtResource("12_uwewo")]

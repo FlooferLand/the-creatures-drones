@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfp8l0357fukm"]
+
+[ext_resource type="PackedScene" uid="uid://dm1qdp602y23w" path="res://models/map/Map.glb" id="1_jokst"]
+[ext_resource type="PackedScene" uid="uid://bvp6o328hujr5" path="res://objects/window/window.tscn" id="2_ai1el"]
+[ext_resource type="PackedScene" uid="uid://dr7k6hn2xu23y" path="res://objects/door/door.tscn" id="3_inpq1"]
+[ext_resource type="PackedScene" uid="uid://b5omt23qmqeot" path="res://models/furniture/Drawer.glb" id="4_3i0kv"]
+[ext_resource type="Environment" uid="uid://byo1qhyhwy27t" path="res://other/world_env.tres" id="4_fxdct"]
+[ext_resource type="PackedScene" uid="uid://4i6yshhv2x0m" path="res://models/furniture/Bed.glb" id="6_4h5sb"]
+[ext_resource type="PackedScene" uid="uid://b0c7ras6xgain" path="res://models/furniture/Sofa.glb" id="6_jlaw3"]
+
+[node name="Map" type="Node3D"]
+
+[node name="Map" parent="." instance=ExtResource("1_jokst")]
+metadata/_edit_lock_ = true
+
+[node name="Windows" type="Node3D" parent="Map"]
+
+[node name="Window0" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0274653, 1.13816, -1.15437)
+
+[node name="Window1" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1441, 1.13816, 6.74924)
+
+[node name="Window2" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1441, 1.13816, 8.5006)
+
+[node name="Window3" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.88521, 1.13816, 9.72641)
+
+[node name="Window4" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.63101, 1.13816, 9.72641)
+
+[node name="Window5" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.38701, 1.13816, 9.72641)
+
+[node name="Window6" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.037, 2.388, 4.358)
+
+[node name="Window7" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04162, 1.13816, -5.00163)
+
+[node name="Window8" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04162, 1.13816, -7.75589)
+
+[node name="Window9" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04162, 1.13816, -10.5059)
+
+[node name="Window10" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.534, 1.13816, -10.7568)
+
+[node name="Window11" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.534, 1.13816, -9.45069)
+
+[node name="Window12" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.534, 1.13816, -5.25142)
+
+[node name="Window13" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.534, 1.13816, -4.20485)
+
+[node name="Window14" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.534, 1.13816, 0.0474956)
+
+[node name="Window15" parent="Map/Windows" instance=ExtResource("2_ai1el")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.534, 1.13816, -1.20377)
+
+[node name="Doors" type="Node3D" parent="Map"]
+
+[node name="Door" parent="Map/Doors" instance=ExtResource("3_inpq1")]
+
+[node name="Door2" parent="Map/Doors" instance=ExtResource("3_inpq1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.9, 0, -2.5)
+
+[node name="Door3" parent="Map/Doors" instance=ExtResource("3_inpq1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.6, 0, 1.3)
+
+[node name="Door4" parent="Map/Doors" instance=ExtResource("3_inpq1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.6, 0, 1.3)
+
+[node name="Door5" parent="Map/Doors" instance=ExtResource("3_inpq1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 0, -5)
+
+[node name="Door6" parent="Map/Doors" instance=ExtResource("3_inpq1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 0, -9.75)
+
+[node name="Furniture" type="Node3D" parent="Map"]
+
+[node name="Drawer" parent="Map/Furniture" instance=ExtResource("4_3i0kv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8, 0.1, -3.3)
+
+[node name="Drawer2" parent="Map/Furniture" instance=ExtResource("4_3i0kv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8, 0.1, -8.8)
+
+[node name="Drawer3" parent="Map/Furniture" instance=ExtResource("4_3i0kv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8, 0.1, -4.2)
+
+[node name="Drawer4" parent="Map/Furniture" instance=ExtResource("4_3i0kv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8, 0.1, -9.7)
+
+[node name="Drawer5" parent="Map/Furniture" instance=ExtResource("4_3i0kv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0.1, -0.1)
+
+[node name="Drawer6" parent="Map/Furniture" instance=ExtResource("4_3i0kv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0.1, -1)
+
+[node name="Drawer7" parent="Map/Furniture" instance=ExtResource("4_3i0kv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.1, 0.1, 4.2)
+
+[node name="Bed" parent="Map/Furniture" instance=ExtResource("6_4h5sb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7, 0, -5.8)
+
+[node name="Bed2" parent="Map/Furniture" instance=ExtResource("6_4h5sb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7, 0, -11.2)
+
+[node name="Sofa" parent="Map/Furniture" instance=ExtResource("6_jlaw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7, 0.08, -0.6)
+
+[node name="Lights" type="Node3D" parent="Map"]
+
+[node name="Background Light" type="OmniLight3D" parent="Map/Lights"]
+transform = Transform3D(0.978086, 0, -0.208202, 0, 1, 0, 0.208202, 0, 0.978086, 28.9286, 45.3674, -91.9434)
+light_color = Color(0, 0.752941, 1, 1)
+light_energy = 100.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_bake_mode = 1
+omni_range = 13.0
+omni_attenuation = 1.86607
+
+[node name="Directional Light" type="DirectionalLight3D" parent="Map/Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.998151, 0.0607872, 0, -0.0607872, 0.998151, 5.07614, 1.98032, 0)
+light_color = Color(0.254902, 0.709804, 0.729412, 1)
+light_energy = 0.8
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = ExtResource("4_fxdct")

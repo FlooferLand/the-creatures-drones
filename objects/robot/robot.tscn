@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dds8imiyuplpr"]
+
+[ext_resource type="PackedScene" uid="uid://nwhlqa0loefe" path="res://models/robot/Robot.glb" id="1_6i6uy"]
+[ext_resource type="Script" path="res://objects/robot/robot.gd" id="1_f0i8j"]
+[ext_resource type="Texture2D" uid="uid://wxqkgf8efhv0" path="res://textures/light/light_03.png" id="2_y0s0h"]
+[ext_resource type="Script" path="res://objects/robot/ooga_booga.gd" id="4_0rgiu"]
+[ext_resource type="Texture2D" uid="uid://bd2p64p73d2ya" path="res://textures/funny/ooga.png" id="4_mxrhk"]
+[ext_resource type="AudioStream" uid="uid://b2bdta7yon8il" path="res://audio/ooga_booga.mp3" id="5_gi77i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqa20"]
+size = Vector3(0.4, 0.2, 0.65)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ff1wg"]
+radius = 3.6
+
+[node name="Robot" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_f0i8j")
+
+[node name="Model" parent="." instance=ExtResource("1_6i6uy")]
+
+[node name="SpotLight" type="SpotLight3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448, -0.244061)
+light_energy = 40.0
+light_volumetric_fog_energy = 1.5
+light_projector = ExtResource("2_y0s0h")
+light_size = 1.0
+shadow_enabled = true
+spot_angle = 40.0
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299513, 0.03)
+shape = SubResource("BoxShape3D_aqa20")
+
+[node name="CloseProximity" type="Area3D" parent="."]
+visible = false
+
+[node name="Collision" type="CollisionShape3D" parent="CloseProximity"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+shape = SubResource("SphereShape3D_ff1wg")
+disabled = true
+
+[node name="OogaBooga" type="Node3D" parent="."]
+script = ExtResource("4_0rgiu")
+
+[node name="Sprite" type="Sprite3D" parent="OogaBooga"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0.9, 0)
+visible = false
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_mxrhk")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="OogaBooga"]
+stream = ExtResource("5_gi77i")
+volume_db = -4.0
+
+[node name="SwitchSprite" type="Timer" parent="OogaBooga"]
+wait_time = 0.08
+
+[node name="NavAgent" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 2.0
