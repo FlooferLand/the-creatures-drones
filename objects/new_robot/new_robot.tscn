@@ -11,10 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://cm0xkp82el7q0" path="res://audio/enemy_angry.wav" id="9_s06fc"]
 [ext_resource type="Script" path="res://scripts/HideInGame.gd" id="10_picfh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8m58y"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_6c8ty"]
 size = Vector3(0.6, 0.4, 0.8)
 
-[sub_resource type="Animation" id="Animation_g3dcq"]
+[sub_resource type="Animation" id="Animation_oounx"]
 resource_name = "Main"
 length = 14.5
 tracks/0/type = "bezier"
@@ -112,7 +112,7 @@ tracks/7/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_ey5l5"]
+[sub_resource type="Animation" id="Animation_w7mhs"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -181,10 +181,10 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2b4cq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thniv"]
 _data = {
-"Main": SubResource("Animation_g3dcq"),
-"RESET": SubResource("Animation_ey5l5")
+"Main": SubResource("Animation_oounx"),
+"RESET": SubResource("Animation_w7mhs")
 }
 
 [node name="New Robot" type="Node3D"]
@@ -218,7 +218,7 @@ omni_range = 6.5
 
 [node name="Collision" type="CollisionShape3D" parent="Robot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299513, 0.03)
-shape = SubResource("BoxShape3D_8m58y")
+shape = SubResource("BoxShape3D_6c8ty")
 
 [node name="OogaBooga" type="Node3D" parent="Robot"]
 script = ExtResource("4_ys4aw")
@@ -263,7 +263,7 @@ doppler_tracking = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_2b4cq")
+"": SubResource("AnimationLibrary_thniv")
 }
 
 [node name="PointArrow" type="CSGBox3D" parent="."]
